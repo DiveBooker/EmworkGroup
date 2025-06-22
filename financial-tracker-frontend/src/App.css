@@ -1,0 +1,250 @@
+/* src/App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.App-header {
+  background-color: #28a745; /* สีเขียว */
+  color: white;
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 20px -20px; /* ขยายให้เต็มขอบบน */
+  text-align: center;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+.controls-section {
+  text-align: right;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+.controls-section label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.controls-section select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap; /* เพื่อให้ลงบรรทัดใหม่ในหน้าจอเล็ก */
+}
+
+.form-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+}
+
+.display-section {
+  flex: 2;
+  min-width: 400px;
+}
+
+/* Transaction Form Styles */
+.transaction-form h3 {
+  color: #007bff; /* สีน้ำเงิน */
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select {
+  width: calc(100% - 22px); /* หัก padding/border */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.transaction-form button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #28a745; /* สีเขียว */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+
+.transaction-form button:hover {
+  background-color: #218838;
+}
+
+.transaction-form .cancel-btn {
+  background-color: #6c757d; /* สีเทา */
+}
+
+.transaction-form .cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Monthly Summary Styles */
+.monthly-summary {
+  background-color: #e9ecef; /* สีเทาอ่อน */
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.monthly-summary h3 {
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.monthly-summary p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.income-text {
+  color: #28a745; /* เขียว */
+  font-weight: bold;
+}
+
+.expense-text {
+  color: #dc3545; /* แดง */
+  font-weight: bold;
+}
+
+.balance-positive {
+  color: #28a745; /* เขียว */
+  font-weight: bold;
+}
+
+.balance-negative {
+  color: #dc3545; /* แดง */
+  font-weight: bold;
+}
+
+/* Transaction List Styles */
+.transaction-list h3 {
+  color: #007bff;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.transaction-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden; /* สำหรับ border-radius กับ table */
+}
+
+.transaction-list th,
+.transaction-list td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.transaction-list th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.transaction-list tr:nth-child(even) {
+  background-color: #f8f9fa; /* สีแถวสลับ */
+}
+
+.transaction-list tr:hover {
+  background-color: #e2f0ff; /* สีเมื่อเมาส์ชี้ */
+}
+
+.income-row {
+  color: #28a745; /* เขียว */
+}
+
+.expense-row {
+  color: #dc3545; /* แดง */
+}
+
+.transaction-list button {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.transaction-list .edit-btn {
+  background-color: #ffc107; /* เหลือง */
+  color: #333;
+}
+
+.transaction-list .edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.transaction-list .delete-btn {
+  background-color: #dc3545; /* แดง */
+  color: white;
+}
+
+.transaction-list .delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+      flex-direction: column;
+  }
+  .form-section, .display-section {
+      min-width: unset;
+      width: 100%;
+  }
+}

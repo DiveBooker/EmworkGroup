@@ -1,6 +1,6 @@
 const { pool } = require('../config/db');
 
-// A. บันทึกรายการ รายรับ/รายจ่าย
+// A. Create/Record an Income/Expense Item
 exports.createTransaction = async (req, res) => {
     const { type, itemName, amount, transactionDate } = req.body;
     if (!type || !itemName || !amount || !transactionDate) {
@@ -19,7 +19,7 @@ exports.createTransaction = async (req, res) => {
     }
 };
 
-// C. แสดงรายการที่บันทึก และค้นหาตามเดือนได้
+// C. Display Recorded Items and Search by Month
 exports.getTransactions = async (req, res) => {
     const { month } = req.query; // month in YYYY-MM format
 
@@ -44,7 +44,7 @@ exports.getTransactions = async (req, res) => {
     }
 };
 
-// B. ปรับปรุงข้อมูล
+// B. Update a Transaction
 exports.updateTransaction = async (req, res) => {
     const { id } = req.params;
     const { type, itemName, amount, transactionDate } = req.body;
@@ -55,7 +55,7 @@ exports.updateTransaction = async (req, res) => {
 
     try {
         const [result] = await pool.execute(
-            'UPDATE transactions SET type = ?, itemName = ?, amount = ?, transactionDate = ? WHERE id = ?',
+            'UPDATE transactions SET type = ?, itemName = ?, amount = ?, transactionDate = ?, updatedAt = CURRENT_TIMESTAMP WHERE id = ?',
             [type, itemName, amount, transactionDate, id]
         );
 
@@ -69,7 +69,7 @@ exports.updateTransaction = async (req, res) => {
     }
 };
 
-// B. ลบข้อมูล
+// B. Delete a Transaction
 exports.deleteTransaction = async (req, res) => {
     const { id } = req.params;
 
@@ -86,9 +86,9 @@ exports.deleteTransaction = async (req, res) => {
     }
 };
 
-// D. แสดงรายงานสรุปค่าใช้จ่าย รายรับทั้งเดือน รายจ่ายทั้งเดือน และยอดคงเหลือ
+// D. Display Summary Report: Monthly Income, Monthly Expense, and Remaining Balance
 exports.getMonthlySummary = async (req, res) => {
-    const { month } = req.query; 
+    const { month } = req.query; // month in YYYY-MM format
 
     if (!month || !/^\d{4}-\d{2}$/.test(month)) {
         return res.status(400).json({ message: 'Please provide month in YYYY-MM format.' });
@@ -105,6 +105,7 @@ exports.getMonthlySummary = async (req, res) => {
             [month]
         );
 
+        // Convert values to Number and handle null/undefined cases
         const totalIncome = Number(incomeRows[0]?.totalIncome || 0);
         const totalExpense = Number(expenseRows[0]?.totalExpense || 0);
         const balance = totalIncome - totalExpense;
